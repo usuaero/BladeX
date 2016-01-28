@@ -1,0 +1,95 @@
+{
+    "airfoil_DB": ".",
+    "case": "MyProp",
+    "condition": {
+        "velocity": 0.0,
+        "density": 1.225
+    },
+    "propeller": {
+        "name": "dummy",
+        "#blades": 2,
+        "diameter": 0.2032,
+        "pitch": 0.1143,
+        "hub_radius": 0.01016,
+        "root_chord": 0.1,
+        "tip_chord": -0.02,
+        "rotation": "CCW",
+		"root_airfoil": {
+            "name" : "NACA_2412",
+            "properties": {
+                "type": "linear",
+                "alpha_L0" : -0.074996798,
+                "CL_alpha" : 6.283185307,
+                "Cm_L0" : -0.111476594,
+                "Cm_alpha" : 0.0,
+                "alpha_min_drag" : 0.0,
+                "CD_min" : 0.0,
+                "CL_max" : 1.4
+            }
+        },
+		"tip_airfoil": {
+            "name" : "NACA_2412",
+            "properties": {
+                "type": "linear",
+                "alpha_L0" : -0.074996798,
+                "CL_alpha" : 6.283185307,
+                "Cm_L0" : -0.111476594,
+                "Cm_alpha" : 0.0,
+                "alpha_min_drag" : 0.0,
+                "CD_min" : 0.0,
+                "CL_max" : 1.4
+            }
+        },
+        "grid": 25
+    },
+    "motor": {
+        "name": "dummy",
+        "kv": 1090,
+        "no_load_current": 0.69,
+        "resistance": 0.235,
+        "gear_ratio": 1.0,
+    },
+    "battery": {
+        "name": "dummy",
+        "#cells": 1,
+        "cell_capacity": 1600,
+        "cell_no_load_voltage": 3.7,
+        "cell_impedance": 0.0141,
+        "c_rating": 1.0
+    },
+    "esc": {
+        "name": "dummy",
+        "resistance": 0.015
+    },
+    "run": {
+        "rpm": {"value": 1000.0},
+        "thrust": {"value": 1.0},
+        "throttle": {"value": 1.0},
+        "sequence" : {
+            "filename" : "diameter_sequence_test.txt",
+            "variable": "diameter",
+            "other" : ["pitch","diameter","kv"],
+            "start": 0.1016,
+            "end": 0.3048,
+            "steps": 11,
+            "holding": "thrust",
+            "value": 1.4
+        },
+        "sequence" : {
+            "variable": "pitch",
+            "start": 0.05715,
+            "end": 0.17145,
+            "steps": 11,
+            "holding": "thrust",
+            "value": 1.4
+        },
+        "sequence" : {
+            "variable": "kv",
+            "start": 545,
+            "end": 1635,
+            "steps": 11,
+            "holding": "thrust",
+            "value": 1.4
+        }
+    }
+}
